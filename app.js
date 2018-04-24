@@ -9,12 +9,13 @@ document.querySelector('#loan-form').addEventListener('submit',function(e) {
 
     //set time out
 
-    setTimeout(calculateResults, 700);
+    setTimeout(calculateResults, 700); // to delay the results inputs from showing up immediatly   
     e.preventDefault();
 });
 
 //calculate resuls function
 function calculateResults() {
+    //grab all the elements and cash it in vars
     const UiAmount = document.querySelector('#amount');
     const UiInterst = document.querySelector('#interst');
     const UiYears = document.querySelector('#years');
@@ -22,6 +23,7 @@ function calculateResults() {
     const UiTotalPayment = document.querySelector('#total-payent');
     const UiTotalInterst = document.querySelector('#total-interst');
 
+    //take  the input values as a strings from thier input feilds and turn it to numbers
     const principal = parseFloat(UiAmount.value);
     const calculatedInterst = parseFloat(UiInterst.value) / 100 / 12;
     const calculatedPyments = parseFloat(UiYears.value) * 12;
@@ -30,6 +32,7 @@ function calculateResults() {
     const x = Math.pow(1 + calculatedInterst, calculatedPyments);
     const monthly = (principal*x*calculatedInterst)/(x-1);
 
+    //check is the number is legal and correct //doesn't consider negative numbers
     if(isFinite(monthly)) {
         UiMonthlyPayment.value = monthly.toFixed(2);
         UiTotalPayment.value = (monthly * calculatedPyments).toFixed(2);
