@@ -32,7 +32,7 @@ function calculateResults() {
     const x = Math.pow(1 + calculatedInterst, calculatedPyments);
     const monthly = (principal*x*calculatedInterst)/(x-1);
 
-    //check is the number is legal and correct //doesn't consider negative numbers
+    //check is the number is legal and correct //doesn't consider negative numbers.
     if(isFinite(monthly)) {
         UiMonthlyPayment.value = monthly.toFixed(2);
         UiTotalPayment.value = (monthly * calculatedPyments).toFixed(2);
